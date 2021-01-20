@@ -4,6 +4,7 @@
 #include<string>
 #include<conio.h>
 #include<Windows.h>
+#include<future>
 
 
 //Struct Jogador
@@ -12,18 +13,24 @@ struct Jogador
 	std::string nome = "";
 	int pontuacao = 0;
 	int vida = 1;
+	int posCabeca[2];
+	int posCauda[2];
 };
 
 
 //Variáveis globais
-const int LIN = 25;
-const int COL = 50;
-char worldMap[LIN][COL];
+const int LIN = 25;			//Quantidade de Linhas da matriz do worldMap
+const int COL = 50;			//Quantidade de Colunas da matriz do worldMap
+char worldMap[LIN][COL];	//Mapa do jogo
 
-struct Jogador placar[10];
+struct Jogador placar[10];	//Vetor de placar dos jogadores
 
+HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 
 //Protótipo de Funções
 void MainMenu();
 void NewGame();
+void StartMap(struct Jogador* jogadorPos);
 void ScoreGame();
+void DrawMap(struct Jogador* jogador);
+void LogicGame(struct Jogador* jogador);
