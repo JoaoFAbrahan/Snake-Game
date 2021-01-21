@@ -42,5 +42,6 @@ void StartMap(struct Jogador* jogadorPos, std::list<Pos>* snakeElements);
 void DrawMap(struct Jogador* jogador);
 void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements);
 void HappyFarm();
+void adicionarScore(int score, std::string name);
 
 void Game0ver(int pontuacao);

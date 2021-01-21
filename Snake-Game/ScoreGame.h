@@ -28,7 +28,13 @@ void adicionarScore(int score, std::string name)
 	{
 		if (placar[i].pontuacao < score)
 		{
-			if (true)
+			if (placar[i].pontuacao == 0)
+			{
+				placar[i].pontuacao = score;
+				placar[i].nome = name;
+				break;
+			}
+			else
 			{
 
 			}

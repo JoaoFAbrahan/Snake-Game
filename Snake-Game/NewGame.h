@@ -31,7 +31,7 @@ void NewGame()
 	}
 
 	Game0ver(jogador.pontuacao);
-	//adicionar pontuação
+	adicionarScore(jogador.pontuacao, jogador.nome);
 }
 
 void StartMap(struct Jogador* jogadorPos, std::list<Pos>* snakeElements)
