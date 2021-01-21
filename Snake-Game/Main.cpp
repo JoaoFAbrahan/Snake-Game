@@ -25,6 +25,7 @@ int main()
 	MainMenu();
 }
 
+//Menu inicial do jogo
 void MainMenu()
 {
 	char opcao;
