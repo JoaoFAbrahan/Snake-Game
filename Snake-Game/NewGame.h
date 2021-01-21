@@ -123,6 +123,7 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			if (worldMap[newPos.x][newPos.y] == '#' || worldMap[newPos.x][newPos.y] == '+')
 			{
 				jogador->GameOver = true;
+				lastKey = NULL;
 			}
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
@@ -149,6 +150,7 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			if (worldMap[newPos.x][newPos.y] == '#' || worldMap[newPos.x][newPos.y] == '+')
 			{
 				jogador->GameOver = true;
+				lastKey = NULL;
 			}
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
@@ -175,6 +177,7 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			if (worldMap[newPos.x][newPos.y] == '#' || worldMap[newPos.x][newPos.y] == '+')
 			{
 				jogador->GameOver = true;
+				lastKey = NULL;
 			}
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
@@ -201,6 +204,7 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			if (worldMap[newPos.x][newPos.y] == '#' || worldMap[newPos.x][newPos.y] == '+')
 			{
 				jogador->GameOver = true;
+				lastKey = NULL;
 			}
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
@@ -235,6 +239,7 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			if (worldMap[newPos.x][newPos.y] == '#' || worldMap[newPos.x][newPos.y] == '+')
 			{
 				jogador->GameOver = true;
+				lastKey = NULL;
 			}
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
@@ -260,6 +265,7 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			if (worldMap[newPos.x][newPos.y] == '#' || worldMap[newPos.x][newPos.y] == '+')
 			{
 				jogador->GameOver = true;
+				lastKey = NULL;
 			}
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
@@ -285,6 +291,7 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			if (worldMap[newPos.x][newPos.y] == '#' || worldMap[newPos.x][newPos.y] == '+')
 			{
 				jogador->GameOver = true;
+				lastKey = NULL;
 			}
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
@@ -310,6 +317,7 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			if (worldMap[newPos.x][newPos.y] == '#' || worldMap[newPos.x][newPos.y] == '+')
 			{
 				jogador->GameOver = true;
+				lastKey = NULL;
 			}
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
