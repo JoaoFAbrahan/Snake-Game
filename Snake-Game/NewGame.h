@@ -31,6 +31,7 @@ void NewGame()
 	}
 
 	Game0ver(jogador.pontuacao);
+	//adicionar pontuação
 }
 
 void StartMap(struct Jogador* jogadorPos, std::list<Pos>* snakeElements)
@@ -340,8 +341,9 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 	}
 }
 
-
-//Spawna frutas e vegetais de maneira aleatoria evitanto gargalos infinitos
+/// <summary>
+/// Spawna frutas e vegetais de maneira aleatoria evitanto gargalos infinitos
+/// </summary>
 void HappyFarm()
 {
 	int aux1;

@@ -18,3 +18,21 @@ void ScoreGame()
 	std::cout << "##################################################" << std::endl;
 	system("pause");
 }
+
+void adicionarScore(int score, std::string name)
+{
+	int aux;
+	std::string aux2;
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (placar[i].pontuacao < score)
+		{
+			if (true)
+			{
+
+			}
+		}
+	}
+
+}
