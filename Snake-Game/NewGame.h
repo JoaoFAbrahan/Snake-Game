@@ -127,10 +127,11 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
 				jogador->pontuacao += 1;
-				HappyFarm();
-
+				
 				snakeElements->push_front(newPos);
 				worldMap[snakeElements->front().x][snakeElements->front().y] = '+';
+
+				HappyFarm();
 			}
 			else
 			{
@@ -152,10 +153,11 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
 				jogador->pontuacao += 1;
-				HappyFarm();
 
 				snakeElements->push_front(newPos);
 				worldMap[snakeElements->front().x][snakeElements->front().y] = '+';
+
+				HappyFarm();
 			}
 			else
 			{
@@ -177,10 +179,11 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
 				jogador->pontuacao += 1;
-				HappyFarm();
 
 				snakeElements->push_front(newPos);
 				worldMap[snakeElements->front().x][snakeElements->front().y] = '+';
+
+				HappyFarm();
 			}
 			else
 			{
@@ -202,10 +205,11 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
 				jogador->pontuacao += 1;
-				HappyFarm();
 
 				snakeElements->push_front(newPos);
 				worldMap[snakeElements->front().x][snakeElements->front().y] = '+';
+
+				HappyFarm();
 			}
 			else
 			{
@@ -386,6 +390,8 @@ label01:
 	if (worldMap[posX][posY] == ' ')
 	{
 		worldMap[posX][posY] = '*';
+		std::cout << "X: " << posX << "y: " << posY << std::endl;
+		Sleep(10);
 	}
 }
 
