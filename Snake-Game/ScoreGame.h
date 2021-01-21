@@ -49,14 +49,14 @@ void adicionarScore(int score, std::string name)
 
 				for (i; i < 10; i++)
 				{
-					aux2 = placar[i].pontuacao;
+					aux2 = placar[i].pontuacao; // pega a pontuação x
 					auxN2 = placar[i].nome;
 
-					placar[i].pontuacao = aux;
+					placar[i].pontuacao = aux; // escreve a pontuação
 					placar[i].nome = auxN;
 
-					aux2 = aux;
-					auxN2 = auxN;
+					aux = aux2; 
+					auxN = auxN2;
 				}
 			}
 		}
