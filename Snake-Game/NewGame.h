@@ -4,6 +4,7 @@
 void NewGame()
 {
 	struct Jogador jogador; //Cria um novo jogador
+	//std::list<char> snakeElements =
 
 	//Pede de entrada um nome para esse novo jogador
 	std::cout << "##################################################" << std::endl;
@@ -13,7 +14,6 @@ void NewGame()
 	std::getline(std::cin, jogador.nome); //Adiciona o nome do jogador na struct jogador
 
 	system("cls");
-	std::cin.ignore();
 
 	//Chama a função StartMap
 	StartMap(&jogador);
@@ -24,13 +24,18 @@ void NewGame()
 	{
 		system("cls");
 
-		DrawMap(&jogador);
-		Sleep(250);
+		DrawMap(&jogador); //Desenha o Mapa Framehate
+		Sleep(150); //Define tempo do Framehate
 
-		LogicGame(&jogador);
+
+		if (LogicGame(&jogador)) //verifica a ação do jogador)
+		{
+			GameOver = true;
+		}
 		//std::async();
 	}
 
+	Game0ver(jogador.pontuacao);
 }
 
 void StartMap(struct Jogador* jogadorPos)
@@ -59,11 +64,10 @@ void StartMap(struct Jogador* jogadorPos)
 
 	//Define posição de desenho do jogador no inicio da partida
 	worldMap[jogadorPos->posCabeca[0]][jogadorPos->posCabeca[1]] = '+';
-	//worldMap[jogadorPos->posCauda[0]][jogadorPos->posCauda[1]] = '+';
 
 
 	//Randomiza posição inicial da fruta
-
+	HappyFarm();
 }
 
 void DrawMap(struct Jogador* jogador)
@@ -96,7 +100,7 @@ void DrawMap(struct Jogador* jogador)
 }
 
 
-void LogicGame(struct Jogador* jogador)
+bool LogicGame(struct Jogador* jogador)
 {
 	if (_kbhit())
 	{
@@ -104,68 +108,90 @@ void LogicGame(struct Jogador* jogador)
 		{
 		case 'w':
 			jogador->posCabeca[0] -= 1; //Move para Cima
+
+			if (worldMap[jogador->posCabeca[0]][jogador->posCabeca[1]] == '+' || worldMap[jogador->posCabeca[0]][jogador->posCabeca[1]] == '#')
+			{
+				return true;
+			}
+			else if (worldMap[jogador->posCabeca[0]][jogador->posCabeca[1]] == '*')
+			{
+				//Adiciona na lista
+				HappyFarm();
+			}
+
 			break;
 		case 's':
 			jogador->posCabeca[0] += 1; //Move para Baixo
+
+			if (worldMap[jogador->posCabeca[0]][jogador->posCabeca[1]] == '+' || worldMap[jogador->posCabeca[0]][jogador->posCabeca[1]] == '#')
+			{
+				return true;
+			}
+			else if (worldMap[jogador->posCabeca[0]][jogador->posCabeca[1]] == '*')
+			{
+				//Adiciona na lista
+				HappyFarm();
+			}
+
 			break;
 		case 'a':
 			jogador->posCabeca[1] -= 1; //Move para Esquerda
+
+			if (worldMap[jogador->posCabeca[0]][jogador->posCabeca[1]] == '+' || worldMap[jogador->posCabeca[0]][jogador->posCabeca[1]] == '#')
+			{
+				return true;
+			}
+			else if (worldMap[jogador->posCabeca[0]][jogador->posCabeca[1]] == '*')
+			{
+				//Adiciona na lista
+				HappyFarm();
+			}
+
 			break;
 		case 'd':
 			jogador->posCabeca[1] += 1; //Move para Direita
+
+			if (worldMap[jogador->posCabeca[0]][jogador->posCabeca[1]] == '+' || worldMap[jogador->posCabeca[0]][jogador->posCabeca[1]] == '#')
+			{
+				return true;
+			}
+			else if (worldMap[jogador->posCabeca[0]][jogador->posCabeca[1]] == '*')
+			{
+				//Adiciona na lista
+				HappyFarm();
+			}
+
 			break;
 		}
 
 		worldMap[jogador->posCabeca[0]][jogador->posCabeca[1]] = '+';
 		//worldMap[jogador->posCauda[0]][jogador->posCauda[1]] = ' ';
+
+		return false;
 	}
 }
 
 
-// função auxiliar
-int GenN(int limite)
-{
-	srand(time(NULL));
-	int num = rand() % limite;
-	return(num);
-}
-
-//usavel para o early instavel para o late game
-void Spawn(char tipo)
-{
-gen:
-	int xpos = GenN(25);
-	int ypos = GenN(50);
-	if (worldMap[xpos][ypos] == ' ')
-	{
-		worldMap[xpos][ypos] = tipo;
-	}
-	else
-	{
-		goto gen;
-	}
-}
-//overenginering
-void FreeSpaces()
+//Spawna frutas e vegetais de maneira aleatoria evitanto gargalos infinitos
+void HappyFarm()
 {
 	int aux1;
 	char aux2;
 	int posX;
 	int posY;
-	bool aux3;
 	int usedLines[23];
 
 	for (int i = 0; i < 23; i++)
 	{
 		usedLines[i] = 0;
 	}
-
-label01:
+	label01:
 	srand(time(NULL));
 	posX = rand() % 23;
 	posX++;
 	aux1 = 0;
-	if (usedLines[posX] == 1) {
+	if (usedLines[posX] == 1)
+	{
 		goto label01;
 	}
 	for (int i = 1; i < 48; i++)
@@ -177,10 +203,12 @@ label01:
 		}
 
 	}
-	if (aux1 == 0) {
+	if (aux1 == 0) 
+	{
+		usedLines[posX] = 1;
 		goto label01;
 	}
-label02:
+	//espaço
 	if (aux1 < 10)
 	{
 		for (int i = 1; i < 48; i++)
@@ -194,6 +222,27 @@ label02:
 	}
 	else
 	{
-	posY = rand() % 48;
+	label02:
+		posY = rand() % 48;
+		posY++;
 	}
+	if (worldMap[posX][posY] == ' ')
+	{
+		worldMap[posX][posY] = '*';
+	}
+}
+
+
+
+//acabou é o fim, se lascou
+void Game0ver(int pontuacao)
+{
+	SetConsoleTextAttribute(handle, FOREGROUND_RED | FOREGROUND_INTENSITY); //Define uma cor no texto do console
+	std::cout << "##################################################" << std::endl;
+	std::cout << "#                  :GAMEOVER:                    #" << std::endl;
+	std::cout << "##################################################" << std::endl;
+	std::cout << "Sua pontuação foi:";
+	std::cout << pontuacao << std::endl;
+	//pontuacao -> pontuação
+	system("pause");
 }

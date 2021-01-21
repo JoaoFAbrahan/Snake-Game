@@ -5,6 +5,7 @@
 #include<conio.h>
 #include<Windows.h>
 #include<future>
+#include<list>
 
 
 //Struct Jogador
@@ -25,7 +26,7 @@ char worldMap[LIN][COL];	//Mapa do jogo
 
 struct Jogador placar[10];	//Vetor de placar dos jogadores
 
-HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE); //Cria 
 
 //Protótipo de Funções
 void MainMenu();
@@ -33,4 +34,7 @@ void NewGame();
 void StartMap(struct Jogador* jogadorPos);
 void ScoreGame();
 void DrawMap(struct Jogador* jogador);
-void LogicGame(struct Jogador* jogador);
+bool LogicGame(struct Jogador* jogador);
+
+void HappyFarm();
+void Game0ver(int pontuacao);
