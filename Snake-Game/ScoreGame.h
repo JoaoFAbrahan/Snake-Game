@@ -22,7 +22,10 @@ void ScoreGame()
 void adicionarScore(int score, std::string name)
 {
 	int aux;
-	std::string aux2;
+	std::string auxN;
+
+	int aux2;
+	std::string auxN2;
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -36,7 +39,25 @@ void adicionarScore(int score, std::string name)
 			}
 			else
 			{
+				aux = placar[i].pontuacao;
+				auxN = placar[i].nome;
 
+				placar[i].nome = name;
+				placar[i].pontuacao = score;
+
+				i++;
+
+				for (i; i < 10; i++)
+				{
+					aux2 = placar[i].pontuacao;
+					auxN2 = placar[i].nome;
+
+					placar[i].pontuacao = aux;
+					placar[i].nome = auxN;
+
+					aux2 = aux;
+					auxN2 = auxN;
+				}
 			}
 		}
 	}
