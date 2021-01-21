@@ -105,8 +105,8 @@ void DrawMap(struct Jogador* jogador)
 
 void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 {
-	static char lastKey = NULL;
-	struct Pos newPos;
+	static char lastKey = NULL; //Cria uma variável estática para ser utilizada como última ação
+	struct Pos newPos; //Cria uma struct para verificar nova posição
 
 	//Verifica se o jogador deu alguma entrada no teclado
 	if (_kbhit())
