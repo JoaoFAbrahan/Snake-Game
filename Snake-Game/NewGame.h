@@ -1,6 +1,6 @@
 #include"Headers.h"
 
-
+///Função chamada ao início de um novo jogo
 void NewGame()
 {
 	struct Jogador jogador; //Cria um novo jogador
@@ -33,6 +33,7 @@ void NewGame()
 	AdicionaScore(jogador.pontuacao, jogador.nome);
 }
 
+///Starta o mapa no inicio da partida
 void StartMap(struct Jogador* jogadorPos, std::list<Pos>* snakeElements)
 {
 	//Define o mapa
@@ -73,6 +74,7 @@ void StartMap(struct Jogador* jogadorPos, std::list<Pos>* snakeElements)
 	HappyFarm();
 }
 
+///Printa os elementos do jogo na tela do console
 void DrawMap(struct Jogador* jogador)
 {
 	SetConsoleTextAttribute(handle, FOREGROUND_RED | FOREGROUND_INTENSITY); //Define uma cor no texto do console
@@ -102,7 +104,7 @@ void DrawMap(struct Jogador* jogador)
 	}
 }
 
-
+///Verifica inputs do jogador
 void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 {
 	static char lastKey = NULL; //Cria uma variável estática para ser utilizada como última ação.
@@ -346,9 +348,8 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 	}
 }
 
-/// <summary>
+
 /// Spawna frutas e vegetais de maneira aleatoria evitanto gargalos infinitos
-/// </summary>
 void HappyFarm()
 {
 	int aux1;
@@ -408,7 +409,8 @@ label01:
 	}
 }
 
-//acabou é o fim, se lascou
+
+///Tela de game over.
 void Game0ver(int pontuacao)
 {
 	SetConsoleTextAttribute(handle, FOREGROUND_RED | FOREGROUND_INTENSITY); //Define uma cor no texto do console

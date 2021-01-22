@@ -1,6 +1,6 @@
 #include"Headers.h"
 
-//Apresenta o score atual do jogo
+///Apresenta o score atual do jogo
 void ScoreGame()
 {
 	std::cout << "##################################################" << std::endl;
@@ -19,6 +19,7 @@ void ScoreGame()
 	system("pause");
 }
 
+///Controla entradas na tabela de score de jogadores
 void AdicionaScore(int score, std::string name)
 {
 	int aux;

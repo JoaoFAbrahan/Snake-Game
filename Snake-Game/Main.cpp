@@ -9,7 +9,7 @@
 	Desenvolvedores:		João Felipe Abrahan,
 							Jorge Calligopoulo.
 
-	Data Desenvolvimento:	20/01/2021 até XX/XX/2021. 
+	Data Desenvolvimento:	20/01/2021 até 22/01/2021. 
 	Versão da Linguagem:	C++17.
 	Tipo de Licença:		MIT.
 */
@@ -25,7 +25,7 @@ int main()
 	MainMenu();
 }
 
-//Menu inicial do jogo
+///Menu inicial do jogo
 void MainMenu()
 {
 	char opcao;

@@ -8,7 +8,7 @@
 #include<list>
 
 
-//Struct Jogador
+///Struct Jogador
 struct Jogador
 {
 	std::string nome = "";
@@ -23,7 +23,7 @@ struct Pos
 };
 
 
-//Variáveis globais
+///Variáveis globais
 HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE); //Cria um handle para definir cor em caracteres do console
 
 const int LIN = 25;			//Quantidade de Linhas da matriz do worldMap.
@@ -33,7 +33,7 @@ char worldMap[LIN][COL];	//Matriz do Mapa do Jogo.
 struct Jogador placar[10];	//Vetor de placar dos jogadores
 
 
-//Protótipo de Funções
+///Protótipo de Funções
 void MainMenu();
 
 void NewGame();
@@ -41,8 +41,7 @@ void StartMap(struct Jogador* jogadorPos, std::list<Pos>* snakeElements);
 void DrawMap(struct Jogador* jogador);
 void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements);
 void HappyFarm();
+void Game0ver(int pontuacao);
 
 void ScoreGame();
 void AdicionaScore(int score, std::string name);
-
-void Game0ver(int pontuacao);
