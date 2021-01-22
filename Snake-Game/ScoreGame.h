@@ -19,7 +19,7 @@ void ScoreGame()
 	system("pause");
 }
 
-void adicionarScore(int score, std::string name)
+void AdicionaScore(int score, std::string name)
 {
 	int aux;
 	std::string auxN;

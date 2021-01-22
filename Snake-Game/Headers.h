@@ -35,13 +35,14 @@ struct Jogador placar[10];	//Vetor de placar dos jogadores
 
 //Protótipo de Funções
 void MainMenu();
-void ScoreGame();
 
 void NewGame();
 void StartMap(struct Jogador* jogadorPos, std::list<Pos>* snakeElements);
 void DrawMap(struct Jogador* jogador);
 void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements);
 void HappyFarm();
-void adicionarScore(int score, std::string name);
+
+void ScoreGame();
+void AdicionaScore(int score, std::string name);
 
 void Game0ver(int pontuacao);
