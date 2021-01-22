@@ -24,13 +24,14 @@ void NewGame()
 		system("cls");
 
 		DrawMap(&jogador); //Desenha o Mapa Framehate
-		Sleep(150); //Define tempo do Framehate
+		Sleep(100); //Define tempo do Framehate
 
 		LogicGame(&jogador, &snakeElements);
 		//std::async();
 	}
 
 	Game0ver(jogador.pontuacao);
+	AdicionaScore(jogador.pontuacao, jogador.nome);
 }
 
 void StartMap(struct Jogador* jogadorPos, std::list<Pos>* snakeElements)
@@ -123,15 +124,15 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			if (worldMap[newPos.x][newPos.y] == '#' || worldMap[newPos.x][newPos.y] == '+')
 			{
 				jogador->GameOver = true;
-				lastKey = NULL;
 			}
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
 				jogador->pontuacao += 1;
-				HappyFarm();
 
 				snakeElements->push_front(newPos);
 				worldMap[snakeElements->front().x][snakeElements->front().y] = '+';
+
+				HappyFarm();
 			}
 			else
 			{
@@ -149,15 +150,15 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			if (worldMap[newPos.x][newPos.y] == '#' || worldMap[newPos.x][newPos.y] == '+')
 			{
 				jogador->GameOver = true;
-				lastKey = NULL;
 			}
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
 				jogador->pontuacao += 1;
-				HappyFarm();
 
 				snakeElements->push_front(newPos);
 				worldMap[snakeElements->front().x][snakeElements->front().y] = '+';
+
+				HappyFarm();
 			}
 			else
 			{
@@ -175,15 +176,15 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			if (worldMap[newPos.x][newPos.y] == '#' || worldMap[newPos.x][newPos.y] == '+')
 			{
 				jogador->GameOver = true;
-				lastKey = NULL;
 			}
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
 				jogador->pontuacao += 1;
-				HappyFarm();
 
 				snakeElements->push_front(newPos);
 				worldMap[snakeElements->front().x][snakeElements->front().y] = '+';
+
+				HappyFarm();
 			}
 			else
 			{
@@ -201,15 +202,15 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			if (worldMap[newPos.x][newPos.y] == '#' || worldMap[newPos.x][newPos.y] == '+')
 			{
 				jogador->GameOver = true;
-				lastKey = NULL;
 			}
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
 				jogador->pontuacao += 1;
-				HappyFarm();
 
 				snakeElements->push_front(newPos);
 				worldMap[snakeElements->front().x][snakeElements->front().y] = '+';
+
+				HappyFarm();
 			}
 			else
 			{
@@ -222,7 +223,15 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			break;
 		}
 
-		lastKey = key; //Define ultima tecla digitada
+		//Define ultima tecla digitada caso o jogador não tenha morrido
+		if (jogador->GameOver == true)
+		{
+			lastKey = NULL;
+		}
+		else
+		{
+			lastKey = key; //Define ultima tecla digitada
+		}
 	}
 	else //Caso nenhuma nova tecla tenha sido digitada ele repete a ultima ação
 	{
@@ -235,7 +244,6 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			if (worldMap[newPos.x][newPos.y] == '#' || worldMap[newPos.x][newPos.y] == '+')
 			{
 				jogador->GameOver = true;
-				lastKey = NULL;
 			}
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
@@ -261,7 +269,6 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			if (worldMap[newPos.x][newPos.y] == '#' || worldMap[newPos.x][newPos.y] == '+')
 			{
 				jogador->GameOver = true;
-				lastKey = NULL;
 			}
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
@@ -287,7 +294,6 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			if (worldMap[newPos.x][newPos.y] == '#' || worldMap[newPos.x][newPos.y] == '+')
 			{
 				jogador->GameOver = true;
-				lastKey = NULL;
 			}
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
@@ -313,7 +319,6 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 			if (worldMap[newPos.x][newPos.y] == '#' || worldMap[newPos.x][newPos.y] == '+')
 			{
 				jogador->GameOver = true;
-				lastKey = NULL;
 			}
 			else if (worldMap[newPos.x][newPos.y] == '*')
 			{
@@ -333,11 +338,18 @@ void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 
 			break;
 		}
+
+		//Define ultima tecla digitada como NULL caso o jogador tenha morrido
+		if (jogador->GameOver == true)
+		{
+			lastKey = NULL;
+		}
 	}
 }
 
-
-//Spawna frutas e vegetais de maneira aleatoria evitanto gargalos infinitos
+/// <summary>
+/// Spawna frutas e vegetais de maneira aleatoria evitanto gargalos infinitos
+/// </summary>
 void HappyFarm()
 {
 	int aux1;
