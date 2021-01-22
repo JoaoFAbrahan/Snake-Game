@@ -26,8 +26,7 @@ void NewGame()
 		DrawMap(&jogador); //Desenha o Mapa Framehate
 		Sleep(100); //Define tempo do Framehate
 
-		LogicGame(&jogador, &snakeElements);
-		//std::async();
+		LogicGame(&jogador, &snakeElements); //Verifica inputs do jogador
 	}
 
 	Game0ver(jogador.pontuacao);
@@ -106,7 +105,7 @@ void DrawMap(struct Jogador* jogador)
 
 void LogicGame(struct Jogador* jogador, std::list<Pos>* snakeElements)
 {
-	static char lastKey = NULL; //Cria uma variável estática para ser utilizada como última ação
+	static char lastKey = NULL; //Cria uma variável estática para ser utilizada como última ação.
 	struct Pos newPos; //Cria uma struct para verificar nova posição
 
 	//Verifica se o jogador deu alguma entrada no teclado
